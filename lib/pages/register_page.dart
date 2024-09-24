@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:practice_flutter_2/components/text_field.dart';
 
 class RegisterPage extends StatelessWidget {
@@ -52,98 +53,104 @@ class RegisterPage extends StatelessWidget {
   //   },
   // };
 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: Colors.grey,
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            AppBar(
-              backgroundColor: Colors.grey[600],
-              title: Center(
-                  child: Text(
-                "DAFTAR AKUN",
+      body: Column(
+        children: [
+          AppBar(
+            backgroundColor: Colors.grey[600],
+            title: Center(child:
+            Text("DAFTAR AKUN",
+            // translations[selectedLanguage]!['title']!,
+              style:
+            TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+              fontSize: 22,
+            ),
+            )
+            ),
+          ),
+
+          const SizedBox(width: 20, height: 20),
+
+          // Username Textfield
+          My_TextField(
+            hintText: 'Username',
+            obscureText: false,
+            labelText: 'Masukan Username',
+            controller: usernameController,
+          ),
+
+          const SizedBox(width: 20, height: 20),
+
+          // Email Textfield
+          My_TextField(
+            hintText: 'Email',
+            obscureText: false,
+            labelText: 'Masukan Email',
+            controller: emailController,
+          ),
+
+
+          const SizedBox(width: 20, height: 20),
+
+          //Password Textfield
+          My_TextField(
+            labelText: 'Masukan Password',
+            obscureText: true,
+            hintText: 'Password',
+            controller: passwordController,
+          ),
+
+          const SizedBox(width: 20, height: 20),
+
+          My_TextField(
+              hintText: "Nomor Telepon",
+              obscureText: false,
+              labelText: "Masukan Nomor Telepon",
+              controller: phoneNumberController
+          ),
+
+          const SizedBox(width: 20, height: 20),
+
+          My_TextField(
+              hintText: "Kode Referral",
+              obscureText: false,
+              labelText: "Masukan Kode Referral (jika ada)",
+              controller: referralCodeController
+          ),
+
+          const SizedBox(width: 50, height: 50),
+
+          Container(
+            height: 53,
+            width: 320,
+            decoration: BoxDecoration(
+              color: Colors.black,
+              // border: Border.all(color: Colors.black, width: 3),
+              borderRadius:BorderRadius.all(Radius.circular(30)),
+            ),
+            child: Center(
+              child: Text(
+                "DAFTAR",
                 style: TextStyle(
                   color: Colors.white,
-                  fontWeight: FontWeight.bold,
                   fontSize: 22,
-                ),
-              )),
-            ),
-
-            const SizedBox(width: 20, height: 20),
-
-            // Username Textfield
-            My_TextField(
-              hintText: 'Username',
-              obscureText: false,
-              labelText: 'Masukan Username',
-              controller: usernameController,
-            ),
-
-            const SizedBox(width: 20, height: 20),
-
-            // Email Textfield
-            My_TextField(
-              hintText: 'Email',
-              obscureText: false,
-              labelText: 'Masukan Email',
-              controller: emailController,
-            ),
-
-            const SizedBox(width: 20, height: 20),
-
-            //Password Textfield
-            My_TextField(
-              labelText: 'Masukan Password',
-              obscureText: true,
-              hintText: 'Password',
-              controller: passwordController,
-            ),
-
-            const SizedBox(width: 20, height: 20),
-
-            My_TextField(
-                hintText: "Nomor Telepon",
-                obscureText: false,
-                labelText: "Masukan Nomor Telepon",
-                controller: phoneNumberController),
-
-            const SizedBox(width: 20, height: 20),
-
-            My_TextField(
-                hintText: "Kode Referral",
-                obscureText: false,
-                labelText: "Masukan Kode Referral (jika ada)",
-                controller: referralCodeController),
-
-            const SizedBox(width: 50, height: 50),
-
-            Container(
-              height: 53,
-              width: 320,
-              decoration: BoxDecoration(
-                color: Colors.black,
-                // border: Border.all(color: Colors.black, width: 3),
-                borderRadius: BorderRadius.all(Radius.circular(30)),
-              ),
-              child: Center(
-                child: Text(
-                  "DAFTAR",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 22,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  fontWeight: FontWeight.bold,
                 ),
               ),
             ),
+          ),
 
-            Text
-          ],
-        ),
+          Spacer(),
+
+          Text("Sudah punya akun KasirKu?",),
+        ],
       ),
     );
   }
