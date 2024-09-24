@@ -43,8 +43,7 @@ class _HomePageState extends State<HomePage> {
 
           const SizedBox(width: 20, height: 20),
 
-          MyButton(
-          ),
+          MyButton(),
 
         ],
       ),

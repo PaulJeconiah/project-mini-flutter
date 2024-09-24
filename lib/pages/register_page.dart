@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:practice_flutter_2/components/text_field.dart';
 
 class RegisterPage extends StatelessWidget {
-
+  final usernameController = TextEditingController();
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -30,6 +32,9 @@ class RegisterPage extends StatelessWidget {
           // Username Textfield
           My_TextField(
             hintText: 'Username',
+            labelText: 'Masukan Username',
+            obscureText: false,
+            controller: usernameController,
           ),
 
           const SizedBox(width: 20, height: 20),
@@ -37,13 +42,19 @@ class RegisterPage extends StatelessWidget {
           // Email Textfield
           My_TextField(
             hintText: 'Email',
+            labelText: 'Masukan Email',
+            obscureText: false,
+            controller: emailController,
           ),
 
           const SizedBox(width: 20, height: 20),
 
           //Password Textfield
           My_TextField(
+            labelText: 'Masukan Password',
             hintText: 'Password',
+            obscureText: true,
+            controller: passwordController,
           ),
         ],
       ),
