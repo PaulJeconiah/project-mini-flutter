@@ -24,7 +24,6 @@ class _My_TextFieldState extends State<My_TextField> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _isObscured = widget.obscureText;
   }
@@ -32,7 +31,6 @@ class _My_TextFieldState extends State<My_TextField> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-
       padding: const EdgeInsets.symmetric(horizontal: 30.0),
       child: TextField(
         controller: widget.controller,
@@ -64,6 +62,8 @@ class _My_TextFieldState extends State<My_TextField> {
           )
               : null,
         ),
+
+
       ),
     );
   }
