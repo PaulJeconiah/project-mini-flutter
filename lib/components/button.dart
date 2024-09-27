@@ -16,6 +16,7 @@ class _MyButtonState extends State<MyButton> {
   Widget build(BuildContext context) {
     return Column(
       children: [
+
         GestureDetector(
           onTap: () {
               Navigator.push(context,
@@ -34,7 +35,7 @@ class _MyButtonState extends State<MyButton> {
             ),
             child: Center(
               child: Text(
-                "Daftar Sekarang",
+                "SIGN UP",
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 22,
@@ -64,7 +65,7 @@ class _MyButtonState extends State<MyButton> {
             ),
             child: Center(
               child: Text(
-                "Login",
+                "LOGIN",
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 22,
