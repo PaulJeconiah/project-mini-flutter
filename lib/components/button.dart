@@ -26,8 +26,8 @@ class _MyButtonState extends State<MyButton> {
               );
           },
           child: Container(
-            height: 53,
-            width: 320,
+            height: 60,
+            width: 330,
             decoration: BoxDecoration(
               color: Colors.black,
               // border: Border.all(color: Colors.black, width: 3),
@@ -38,7 +38,7 @@ class _MyButtonState extends State<MyButton> {
                 "SIGN UP",
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize: 22,
+                  fontSize: 26,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -57,8 +57,8 @@ class _MyButtonState extends State<MyButton> {
             );
           },
           child: Container(
-            height: 53,
-            width: 320,
+            height: 60,
+            width: 330,
             decoration: BoxDecoration(
                 border: Border.all(color: Colors.black, width: 3, style: BorderStyle.solid),
                 borderRadius: BorderRadius.all(Radius.circular(30))
@@ -67,8 +67,8 @@ class _MyButtonState extends State<MyButton> {
               child: Text(
                 "LOGIN",
                 style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 22,
+                  color: Colors.black,
+                  fontSize: 26,
                   fontWeight: FontWeight.bold,
                 ),
               ),

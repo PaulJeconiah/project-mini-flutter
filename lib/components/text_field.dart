@@ -31,7 +31,7 @@ class _My_TextFieldState extends State<My_TextField> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 30.0),
+      padding: const EdgeInsets.symmetric(horizontal: 30),
       child: TextField(
         controller: widget.controller,
         obscureText: _isObscured,
@@ -39,7 +39,7 @@ class _My_TextFieldState extends State<My_TextField> {
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(30)),
             borderSide: BorderSide(
-                color: Colors.black, width: 2),
+                color: Colors.black, width: 3),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(30)),
