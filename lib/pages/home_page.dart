@@ -1,7 +1,11 @@
-// ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers
+// ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
 import 'package:practice_flutter_2/components/button.dart';
+import 'package:practice_flutter_2/components/button.dart';
+import 'package:practice_flutter_2/components/image_component.dart';
+import 'package:practice_flutter_2/pages/login_page.dart';
+import 'package:practice_flutter_2/pages/register_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -21,20 +25,64 @@ class _HomePageState extends State<HomePage> {
         body: Column(
           children: [
             Expanded(
-                flex: 2,
-                child: Container(
-                  child: ClipRRect(
-                      borderRadius: BorderRadius.circular(8),
-                      child: Image.asset(
-                        'lib/images/Leonardo_Phoenix_Design_a_modern_logo_for_the_mobile_app_Kasir_3.jpg',
-                        height: 200,
-                        width: 300,
-                      )),
-                )),
+              flex: 2,
+              child: Container(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    myImage(
+                      Width: 300,
+                    ),
+                  ],
+                ),
+              ),
+            ),
             Expanded(
                 flex: 1,
                 child: Container(
-                  child: Center(child: MyButton()),
+                  child: Center(
+                    child: Column(
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => RegisterPage(),
+                              ),
+                            );
+                          },
+                          child: MyButton(
+                            buttonText: 'SIGN UP',
+                            colorButton: Colors.black,
+                            colorText: Colors.white,
+                            Width: 330,
+                            Height: 60,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => LoginPage(),
+                              ),
+                            );
+                          },
+                          child: MyButton(
+                            buttonText: 'LOGIN',
+                            colorText: Colors.black,
+                            colorButton: Colors.white,
+                            Width: 330,
+                            Height: 60,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 )),
           ],
         ),

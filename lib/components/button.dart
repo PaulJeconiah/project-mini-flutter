@@ -3,81 +3,50 @@
 import 'package:flutter/material.dart';
 import 'package:practice_flutter_2/pages/login_page.dart';
 import 'package:practice_flutter_2/pages/register_page.dart';
+import 'package:practice_flutter_2/pages/registering_stores.dart';
 
 class MyButton extends StatefulWidget {
-  const MyButton({super.key});
+  final String buttonText;
+  final Color colorText;
+  final Color colorButton;
+  final double Height;
+  final double Width;
+
+  const MyButton({
+    super.key,
+    required this.buttonText,
+    required this.colorText,
+    required this.colorButton,
+    required this.Width,
+    required this.Height,
+  });
 
   @override
-  State<MyButton> createState() => _MyButtonState();
+  State<MyButton> createState() => _buttonRegisterState();
 }
 
-class _MyButtonState extends State<MyButton> {
+class _buttonRegisterState extends State<MyButton> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-
-        GestureDetector(
-          onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder:
-                      (context) => RegisterPage(),
-                  )
-              );
-          },
-          child: Container(
-            height: 60,
-            width: 330,
-            decoration: BoxDecoration(
-              color: Colors.black,
-              // border: Border.all(color: Colors.black, width: 3),
-              borderRadius:BorderRadius.all(Radius.circular(30)),
-            ),
-            child: Center(
-              child: Text(
-                "SIGN UP",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 26,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
+    return Container(
+      height: widget.Height,
+      width: widget.Width,
+      decoration: BoxDecoration(
+        color: widget.colorButton,
+        borderRadius: BorderRadius.all(
+          Radius.circular(30),
+        ),
+      ),
+      child: Center(
+        child: Text(
+          widget.buttonText,
+          style: TextStyle(
+            color: widget.colorText,
+            fontSize: 26,
+            fontWeight: FontWeight.bold,
           ),
         ),
-
-        const SizedBox(width: 20, height: 20,),
-
-        GestureDetector(
-          onTap: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder:
-                    (context) => LoginPage(),
-                )
-            );
-          },
-          child: Container(
-            height: 60,
-            width: 330,
-            decoration: BoxDecoration(
-                border: Border.all(color: Colors.black, width: 3, style: BorderStyle.solid),
-                borderRadius: BorderRadius.all(Radius.circular(30))
-            ),
-            child: Center(
-              child: Text(
-                "LOGIN",
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 26,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-          ),
-        ),
-      ],
+      ),
     );
   }
 }
-
-
