@@ -41,7 +41,7 @@ class lupaPassword extends StatelessWidget {
                     Text(
                       'Masukan alamat email Anda untuk mendapatkan reset kata sandi',
                       style: TextStyle(
-                        color: Colors.white,
+                        color: Colors.black,
                         fontWeight: FontWeight.bold,
                         fontSize: 26,
                       ),

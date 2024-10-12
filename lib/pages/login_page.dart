@@ -1,10 +1,11 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_unnecessary_containers
 
 import 'package:flutter/material.dart';
 import 'package:practice_flutter_2/components/button.dart';
 import 'package:practice_flutter_2/components/image_component.dart';
 import 'package:practice_flutter_2/components/text_field.dart';
 import 'package:practice_flutter_2/pages/forgot_password.dart';
+import 'package:practice_flutter_2/pages/home_page.dart';
 import 'package:practice_flutter_2/pages/register_page.dart';
 
 class LoginPage extends StatefulWidget {
@@ -62,13 +63,25 @@ class _LoginPageState extends State<LoginPage> {
             child: Container(
               child: Column(
                 children: [
-                  Center(
-                    child: MyButton(
-                      buttonText: 'LOGIN',
-                      colorText: Colors.white,
-                      colorButton: Colors.black,
-                      Width: 330,
-                      Height: 60,
+                  Container(
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => HomePage(),
+                          ),
+                        );
+                      },
+                      child: Center(
+                        child: MyButton(
+                          buttonText: 'LOGIN',
+                          colorText: Colors.white,
+                          colorButton: Colors.black,
+                          Width: 330,
+                          Height: 60,
+                        ),
+                      ),
                     ),
                   ),
                   Row(

@@ -7,14 +7,14 @@ import 'package:practice_flutter_2/components/image_component.dart';
 import 'package:practice_flutter_2/pages/login_page.dart';
 import 'package:practice_flutter_2/pages/register_page.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class FrontPage extends StatefulWidget {
+  const FrontPage({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<FrontPage> createState() => _FrontPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _FrontPageState extends State<FrontPage> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

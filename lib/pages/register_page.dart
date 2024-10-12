@@ -9,6 +9,8 @@ import 'package:practice_flutter_2/components/phone_number_field.dart';
 import 'package:practice_flutter_2/components/text_field.dart';
 import 'package:practice_flutter_2/pages/login_page.dart';
 import 'package:practice_flutter_2/pages/registering_stores.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
+// import 'registering_stores.dart';
 
 class RegisterPage extends StatelessWidget {
   final usernameController = TextEditingController();
@@ -26,6 +28,17 @@ class RegisterPage extends StatelessWidget {
   Widget build(BuildContext context) {
     double Width = MediaQuery.sizeOf(context).width;
     double Height = MediaQuery.sizeOf(context).height;
+
+    void signUpUser() async {
+      final supabase = Supabase.instance.client;
+
+      final authResponse = await supabase.auth.signUp(
+        password: passwordController.text,
+        email: emailController.text,
+        phone: phoneNumberController.text,
+      );
+    }
+
     return Scaffold(
         resizeToAvoidBottomInset: false,
         backgroundColor: Colors.grey,
@@ -105,12 +118,7 @@ class RegisterPage extends StatelessWidget {
                 child: Center(
                   child: GestureDetector(
                     onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => dataTokoPage(),
-                        ),
-                      );
+                      signUpUser();
                     },
                     child: MyButton(
                       buttonText: 'SIGN UP',
