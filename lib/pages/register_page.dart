@@ -12,7 +12,12 @@ import 'package:practice_flutter_2/pages/registering_stores.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 // import 'registering_stores.dart';
 
-class RegisterPage extends StatelessWidget {
+class RegisterPage extends StatefulWidget {
+  @override
+  State<RegisterPage> createState() => _RegisterPageState();
+}
+
+class _RegisterPageState extends State<RegisterPage> {
   final usernameController = TextEditingController();
 
   final emailController = TextEditingController();
@@ -23,21 +28,49 @@ class RegisterPage extends StatelessWidget {
 
   final referralCodeController = TextEditingController();
 
+  final supabase = Supabase.instance.client;
+
+  User? user;
+
+  @override
+  void initState() {
+    signUpUser();
+    super.initState();
+  }
+
+  void signUpUser() async {
+    try {
+      // final usernamCtrlr = usernameController.text;
+      final emailCtrlr = emailController.text;
+      final passwordCtrlr = passwordController.text;
+      final phoneCtrlr = phoneNumberController.text;
+      final data = await supabase.from('register').insert({
+        'email': emailCtrlr,
+        'password': passwordCtrlr,
+        'phone': phoneCtrlr,
+      });
+      await supabase.auth.signUp(
+        email: emailCtrlr,
+        password: passwordCtrlr,
+        phone: phoneCtrlr,
+      );
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  Future<void> _getAuth() async {
+    setState(() {
+      user = Supabase.instance.client.auth.currentUser;
+    });
+    Supabase.instance.client.auth.onAuthStateChange.listen((data) {});
+  }
+
   // final Map<String, Map<String, String>> translations = {
   @override
   Widget build(BuildContext context) {
     double Width = MediaQuery.sizeOf(context).width;
     double Height = MediaQuery.sizeOf(context).height;
-
-    void signUpUser() async {
-      final supabase = Supabase.instance.client;
-
-      final authResponse = await supabase.auth.signUp(
-        password: passwordController.text,
-        email: emailController.text,
-        phone: phoneNumberController.text,
-      );
-    }
 
     return Scaffold(
         resizeToAvoidBottomInset: false,
@@ -117,8 +150,13 @@ class RegisterPage extends StatelessWidget {
               child: Container(
                 child: Center(
                   child: GestureDetector(
-                    onTap: () {
-                      signUpUser();
+                    onTap: () async {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => dataTokoPage(),
+                        ),
+                      );
                     },
                     child: MyButton(
                       buttonText: 'SIGN UP',
