@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:practice_flutter_2/components/dropdown_button.dart';
 
 class dataTokoPage extends StatefulWidget {
   @override
@@ -9,8 +10,8 @@ class dataTokoPage extends StatefulWidget {
 }
 
 class _dataTokoPageState extends State<dataTokoPage> {
-  String? _valJenisUsaha;
-  final List<String> _jenisUsaha = [
+  String? _selectedJenisUsaha;
+  final List<String> jenisUsaha = [
     "Apotek/Toko Obat & Kecantikan",
     "Bengkel & Carwash",
     "Counter Pulsa & Handphone",
@@ -55,46 +56,16 @@ class _dataTokoPageState extends State<dataTokoPage> {
             Expanded(
               flex: 4,
               child: Container(
-                color: Colors.black,
+                color: Colors.grey,
                 padding: EdgeInsets.all(30),
-                child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 16,),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.white.withOpacity(0.2),
-                        blurRadius: 4,
-                        offset: Offset(0, 2),
-                      ),
-                    ],
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: DropdownButtonFormField<String>(
-                    value: _valJenisUsaha,
-                    icon: Icon(
-                      Icons.keyboard_arrow_down_sharp,
-                      color: Colors.black,
-                    ),
-                    decoration: InputDecoration(
-                      hintText: 'Pilih Jenis Usaha',
-                      hintStyle: TextStyle(
-                        color: Colors.black,
-                      ),
-                    ),
-                    onChanged: (String? newValue) {
-                      setState(() {
-                        _valJenisUsaha = newValue;
-                      });
-                    },
-                    items: _jenisUsaha
-                        .map<DropdownMenuItem<String>>((String value) {
-                      return DropdownMenuItem<String>(
-                        value: value,
-                        child: Text(value),
-                      );
-                    }).toList(),
-                  ),
+                child: ButtonDropDown(
+                  hint: 'pilih jenis usaha..',
+                  valJenisUsaha: (String? value) {
+                    setState(() {
+                      _selectedJenisUsaha = value;
+                    });
+                  },
+                  jenisUsaha: jenisUsaha,
                 ),
               ),
             ),
