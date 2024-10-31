@@ -28,43 +28,43 @@ class _RegisterPageState extends State<RegisterPage> {
 
   final referralCodeController = TextEditingController();
 
-  final supabase = Supabase.instance.client;
+  // final supabase = Supabase.instance.client;
 
   User? user;
 
-  @override
-  void initState() {
-    signUpUser();
-    super.initState();
-  }
+  // @override
+  // void initState() {
+  //   signUpUser();
+  //   super.initState();
+  // }
 
-  void signUpUser() async {
-    try {
-      // final usernamCtrlr = usernameController.text;
-      final emailCtrlr = emailController.text;
-      final passwordCtrlr = passwordController.text;
-      final phoneCtrlr = phoneNumberController.text;
-      final data = await supabase.from('register').insert({
-        'email': emailCtrlr,
-        'password': passwordCtrlr,
-        'phone': phoneCtrlr,
-      });
-      await supabase.auth.signUp(
-        email: emailCtrlr,
-        password: passwordCtrlr,
-        phone: phoneCtrlr,
-      );
-    } catch (e) {
-      print(e);
-    }
-  }
+  // void signUpUser() async {
+  //   try {
+  //     // final usernamCtrlr = usernameController.text;
+  //     final emailCtrlr = emailController.text;
+  //     final passwordCtrlr = passwordController.text;
+  //     final phoneCtrlr = phoneNumberController.text;
+  //     final data = await supabase.from('register').insert({
+  //       'email': emailCtrlr,
+  //       'password': passwordCtrlr,
+  //       'phone': phoneCtrlr,
+  //     });
+  //     await supabase.auth.signUp(
+  //       email: emailCtrlr,
+  //       password: passwordCtrlr,
+  //       phone: phoneCtrlr,
+  //     );
+  //   } catch (e) {
+  //     print(e);
+  //   }
+  // }
 
-  Future<void> _getAuth() async {
-    setState(() {
-      user = Supabase.instance.client.auth.currentUser;
-    });
-    Supabase.instance.client.auth.onAuthStateChange.listen((data) {});
-  }
+  // Future<void> _getAuth() async {
+  //   setState(() {
+  //     user = Supabase.instance.client.auth.currentUser;
+  //   });
+  //   Supabase.instance.client.auth.onAuthStateChange.listen((data) {});
+  // }
 
   // final Map<String, Map<String, String>> translations = {
   @override

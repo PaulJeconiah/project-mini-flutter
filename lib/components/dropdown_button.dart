@@ -32,9 +32,7 @@ class _ButtonDropDownState extends State<ButtonDropDown> {
         ),
 
       ),
-      hint: Container(
-        child: Text(widget.hint),
-      ),
+      hint: Text(widget.hint),
       style: TextStyle(
         fontFamily: 'Poppins',
         fontSize: 20,
@@ -55,10 +53,7 @@ class _ButtonDropDownState extends State<ButtonDropDown> {
         return null;
       },
       onSaved: (value) {
-        setState(() {
-          _selectedValue = value.toString();
-        });
-        widget.valJenisUsaha(value.toString());
+        _selectedValue = value.toString();
       },
       buttonStyleData: ButtonStyleData(
         padding: EdgeInsets.only(right: 8),

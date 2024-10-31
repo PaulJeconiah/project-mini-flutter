@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:practice_flutter_2/components/dropdown_button.dart';
+import 'package:practice_flutter_2/components/text_field.dart';
 
 class dataTokoPage extends StatefulWidget {
   @override
@@ -11,6 +12,9 @@ class dataTokoPage extends StatefulWidget {
 
 class _dataTokoPageState extends State<dataTokoPage> {
   String? _selectedJenisUsaha;
+
+  final tokoController = TextEditingController();
+
   final List<String> jenisUsaha = [
     "Apotek/Toko Obat & Kecantikan",
     "Bengkel & Carwash",
@@ -57,20 +61,29 @@ class _dataTokoPageState extends State<dataTokoPage> {
               flex: 4,
               child: Container(
                 color: Colors.grey,
-                padding: EdgeInsets.all(30),
-                child: ButtonDropDown(
-                  hint: 'pilih jenis usaha..',
-                  valJenisUsaha: (String? value) {
-                    setState(() {
-                      _selectedJenisUsaha = value;
-                    });
-                  },
-                  jenisUsaha: jenisUsaha,
+                child: Column(
+                  children: [
+                    SizedBox(
+                      height: 25,
+                    ),
+                    My_TextField(
+                      hintText: 'Masukan Nama Toko/Usaha',
+                      obscureText: false,
+                      labelText: 'Nama Toko/Usaha',
+                      controller: tokoController,
+                    ),
+                    SizedBox(
+                      height: 25,
+                    ),
+                    
+                  ],
                 ),
               ),
             ),
             Expanded(
+              flex: 1,
               child: Container(
+                color: Colors.red,
                 child: Center(
                   child: Text(
                     'gaowkjm',
