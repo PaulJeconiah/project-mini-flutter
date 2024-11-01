@@ -1,5 +1,6 @@
 // ignore_for_file: avoid_unnecessary_containers, prefer_const_constructors, prefer_const_literals_to_create_immutables, prefer_final_fields
 
+import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:practice_flutter_2/components/dropdown_button.dart';
@@ -16,6 +17,7 @@ class _dataTokoPageState extends State<dataTokoPage> {
   final tokoController = TextEditingController();
 
   final List<String> jenisUsaha = [
+    "Pilih jenis usaha..",
     "Apotek/Toko Obat & Kecantikan",
     "Bengkel & Carwash",
     "Counter Pulsa & Handphone",
@@ -63,6 +65,7 @@ class _dataTokoPageState extends State<dataTokoPage> {
                 color: Colors.grey,
                 child: Column(
                   children: [
+                    ButtonDropDown(hint: 'Pilih jenis usaha..', jenisUsaha: jenisUsaha),
                     SizedBox(
                       height: 25,
                     ),
@@ -75,7 +78,6 @@ class _dataTokoPageState extends State<dataTokoPage> {
                     SizedBox(
                       height: 25,
                     ),
-                    
                   ],
                 ),
               ),

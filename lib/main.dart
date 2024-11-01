@@ -9,9 +9,6 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  await Future.delayed(Duration(seconds: 5),);
-  FlutterNativeSplash.remove();
-
   runApp(const MyApp());
 }
 

@@ -7,12 +7,12 @@ class ButtonDropDown extends StatefulWidget {
   const ButtonDropDown({
     super.key,
     required this.hint,
-    required this.valJenisUsaha,
+    // required this.valJenisUsaha,
     required this.jenisUsaha,
   });
 
   final String hint;
-  final void Function(String?) valJenisUsaha;
+  // final void Function(String?) valJenisUsaha;
   final List<String> jenisUsaha;
 
   @override
@@ -23,51 +23,63 @@ class _ButtonDropDownState extends State<ButtonDropDown> {
   String? _selectedValue;
   @override
   Widget build(BuildContext context) {
-    return DropdownButtonFormField2<String>(
-      isExpanded: true,
-      decoration: InputDecoration(
-        contentPadding: EdgeInsets.symmetric(vertical: 16),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(38),
+    return Padding(
+      padding: const EdgeInsets.symmetric(
+        horizontal: 30,
+      ),
+      child: DropdownButtonFormField2<String>(
+        isExpanded: true,
+        decoration: InputDecoration(
+          contentPadding: const EdgeInsets.symmetric(vertical: 16),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.all(Radius.circular(30)),
+            borderSide: BorderSide(color: Colors.black, width: 3),
+          ),
         ),
-
-      ),
-      hint: Text(widget.hint),
-      style: TextStyle(
-        fontFamily: 'Poppins',
-        fontSize: 20,
-        fontWeight: FontWeight.w300,
-      ),
-      items: widget.jenisUsaha
-          .map(
-            (item) => DropdownMenuItem<String>(
-              value: item,
-              child: Text(item),
-            ),
-          )
-          .toList(),
-      validator: (value) {
-        if (value == null) {
-          return widget.hint;
-        }
-        return null;
-      },
-      onSaved: (value) {
-        _selectedValue = value.toString();
-      },
-      buttonStyleData: ButtonStyleData(
-        padding: EdgeInsets.only(right: 8),
-      ),
-      iconStyleData: IconStyleData(
-        icon: Icon(
-          Icons.arrow_drop_down,
-          color: Colors.white,
+        hint: const Text(
+          'Pilih jenis usaha..',
+          style: TextStyle(fontSize: 16),
         ),
-        iconSize: 30,
-      ),
-      dropdownStyleData: DropdownStyleData(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(15),
+        items: widget.jenisUsaha
+            .map((item) => DropdownMenuItem<String>(
+                  value: item,
+                  child: Text(
+                    item,
+                    style: const TextStyle(
+                      fontSize: 14,
+                    ),
+                  ),
+                ))
+            .toList(),
+        validator: (value) {
+          if (value == null) {
+            return 'Please select gender.';
+          }
+          return null;
+        },
+        onChanged: (value) {
+          //Do something when selected item is changed.
+        },
+        onSaved: (value) {
+          _selectedValue = value.toString();
+        },
+        buttonStyleData: const ButtonStyleData(
+          padding: EdgeInsets.only(right: 8),
+        ),
+        iconStyleData: const IconStyleData(
+          icon: Icon(
+            Icons.arrow_drop_down,
+            color: Colors.black45,
+          ),
+          iconSize: 24,
+        ),
+        dropdownStyleData: DropdownStyleData(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(15),
+          ),
+        ),
+        menuItemStyleData: const MenuItemStyleData(
+          padding: EdgeInsets.symmetric(horizontal: 16),
         ),
       ),
     );
