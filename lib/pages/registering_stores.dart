@@ -65,7 +65,8 @@ class _dataTokoPageState extends State<dataTokoPage> {
                 color: Colors.grey,
                 child: Column(
                   children: [
-                    ButtonDropDown(hint: 'Pilih jenis usaha..', jenisUsaha: jenisUsaha),
+                    ButtonDropDown(
+                        hint: 'Pilih jenis usaha..', jenisUsaha: jenisUsaha),
                     SizedBox(
                       height: 25,
                     ),
@@ -74,6 +75,21 @@ class _dataTokoPageState extends State<dataTokoPage> {
                       obscureText: false,
                       labelText: 'Nama Toko/Usaha',
                       controller: tokoController,
+                    ),
+                    SizedBox(
+                      height: 25,
+                    ),
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 35),
+                        child: Text(
+                          'Negara',
+                          style: TextStyle(
+                            color: Colors.black,
+                          ),
+                        ),
+                      ),
                     ),
                     SizedBox(
                       height: 25,

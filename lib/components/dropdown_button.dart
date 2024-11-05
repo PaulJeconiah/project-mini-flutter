@@ -30,15 +30,16 @@ class _ButtonDropDownState extends State<ButtonDropDown> {
       child: DropdownButtonFormField2<String>(
         isExpanded: true,
         decoration: InputDecoration(
-          contentPadding: const EdgeInsets.symmetric(vertical: 16),
+          fillColor: Colors.red,
+          contentPadding: const EdgeInsets.symmetric(vertical: 18),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(30)),
             borderSide: BorderSide(color: Colors.black, width: 3),
           ),
         ),
-        hint: const Text(
-          'Pilih jenis usaha..',
-          style: TextStyle(fontSize: 16),
+        hint: Text(
+          widget.hint,
+          style: TextStyle(fontSize: 18, fontWeight: FontWeight.normal),
         ),
         items: widget.jenisUsaha
             .map((item) => DropdownMenuItem<String>(
@@ -53,7 +54,7 @@ class _ButtonDropDownState extends State<ButtonDropDown> {
             .toList(),
         validator: (value) {
           if (value == null) {
-            return 'Please select gender.';
+            return widget.hint;
           }
           return null;
         },

@@ -8,12 +8,12 @@ class My_TextField extends StatefulWidget {
   final String hintText;
   final String labelText;
 
-  const My_TextField({
-    super.key,
-    required this.hintText,
-    required this.obscureText,
-    required this.labelText,
-    required this.controller});
+  const My_TextField(
+      {super.key,
+      required this.hintText,
+      required this.obscureText,
+      required this.labelText,
+      required this.controller});
 
   @override
   State<My_TextField> createState() => _My_TextFieldState();
@@ -38,32 +38,29 @@ class _My_TextFieldState extends State<My_TextField> {
         decoration: InputDecoration(
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(30)),
-            borderSide: BorderSide(
-                color: Colors.black, width: 3),
+            borderSide: BorderSide(color: Colors.black, width: 3),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(30)),
-            borderSide: BorderSide(
-                color: Colors.black45, width: 2),
+            borderSide: BorderSide(color: Colors.black45, width: 2),
           ),
-          fillColor: Colors.white12,
+          fillColor: Colors.grey,
           filled: true,
           labelText: widget.labelText,
           hintText: widget.hintText,
           suffixIcon: widget.obscureText
-              ? IconButton(icon: Icon(
-            _isObscured ?
-            Icons.visibility_off : Icons.visibility,),
-            onPressed: () {
-              setState(() {
-                _isObscured = !_isObscured;
-              });
-            },
-          )
+              ? IconButton(
+                  icon: Icon(
+                    _isObscured ? Icons.visibility_off : Icons.visibility,
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      _isObscured = !_isObscured;
+                    });
+                  },
+                )
               : null,
         ),
-
-
       ),
     );
   }
