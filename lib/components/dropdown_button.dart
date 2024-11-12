@@ -8,12 +8,12 @@ class ButtonDropDown extends StatefulWidget {
     super.key,
     required this.hint,
     // required this.valJenisUsaha,
-    required this.jenisUsaha,
+    required this.choices,
   });
 
   final String hint;
   // final void Function(String?) valJenisUsaha;
-  final List<String> jenisUsaha;
+  final List<String> choices;
 
   @override
   State<ButtonDropDown> createState() => _ButtonDropDownState();
@@ -41,7 +41,7 @@ class _ButtonDropDownState extends State<ButtonDropDown> {
           widget.hint,
           style: TextStyle(fontSize: 18, fontWeight: FontWeight.normal),
         ),
-        items: widget.jenisUsaha
+        items: widget.choices
             .map((item) => DropdownMenuItem<String>(
                   value: item,
                   child: Text(
