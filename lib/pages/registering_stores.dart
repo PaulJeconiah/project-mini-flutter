@@ -4,8 +4,10 @@ import 'package:country_picker/country_picker.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:practice_flutter_2/components/button.dart';
 import 'package:practice_flutter_2/components/dropdown_button.dart';
 import 'package:practice_flutter_2/components/text_field.dart';
+import 'package:practice_flutter_2/pages/home_page.dart';
 
 class dataTokoPage extends StatefulWidget {
   @override
@@ -16,6 +18,7 @@ class _dataTokoPageState extends State<dataTokoPage> {
   String? _selectedJenisUsaha;
 
   final tokoController = TextEditingController();
+  final alamatController = TextEditingController();
 
   final List<String> jenisUsaha = [
     "Pilih jenis usaha..",
@@ -399,6 +402,15 @@ class _dataTokoPageState extends State<dataTokoPage> {
                       hint: 'Pilih provinsi',
                       choices: provinsi,
                     ),
+                    SizedBox(
+                      height: 25,
+                    ),
+                    My_TextField(
+                      hintText: "Masukkan Alamat",
+                      obscureText: false,
+                      labelText: "Alamat",
+                      controller: alamatController,
+                    ),
                   ],
                 ),
               ),
@@ -407,13 +419,26 @@ class _dataTokoPageState extends State<dataTokoPage> {
               flex: 1,
               child: Container(
                 color: Colors.red,
-                child: Center(
-                  child: Text(
-                    'gaowkjm',
-                    style: TextStyle(
-                      color: Colors.black,
+                child: Column(
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => HomePage(),
+                          ),
+                        );
+                      },
+                      child: MyButton(
+                        buttonText: 'SIGN UP',
+                        colorButton: Colors.black,
+                        colorText: Colors.white,
+                        Width: 330,
+                        Height: 60,
+                      ),
                     ),
-                  ),
+                  ],
                 ),
               ),
             ),
