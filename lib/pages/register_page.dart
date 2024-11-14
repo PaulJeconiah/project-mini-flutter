@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers
+// ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers, await_only_futures
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -28,7 +28,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
   final referralCodeController = TextEditingController();
 
-  // final supabase = Supabase.instance.client;
+  final supabase = Supabase.instance.client;
 
   User? user;
 
@@ -38,33 +38,35 @@ class _RegisterPageState extends State<RegisterPage> {
   //   super.initState();
   // }
 
-  // void signUpUser() async {
-  //   try {
-  //     // final usernamCtrlr = usernameController.text;
-  //     final emailCtrlr = emailController.text;
-  //     final passwordCtrlr = passwordController.text;
-  //     final phoneCtrlr = phoneNumberController.text;
-  //     final data = await supabase.from('register').insert({
-  //       'email': emailCtrlr,
-  //       'password': passwordCtrlr,
-  //       'phone': phoneCtrlr,
-  //     });
-  //     await supabase.auth.signUp(
-  //       email: emailCtrlr,
-  //       password: passwordCtrlr,
-  //       phone: phoneCtrlr,
-  //     );
-  //   } catch (e) {
-  //     print(e);
-  //   }
-  // }
+  void signUpUsers() async {
+    try {
+      final username = usernameController.text;
+      final password = passwordController.text;
+      final email = emailController.text;
+      final phoneNumber = phoneNumberController.text;
 
-  // Future<void> _getAuth() async {
-  //   setState(() {
-  //     user = Supabase.instance.client.auth.currentUser;
-  //   });
-  //   Supabase.instance.client.auth.onAuthStateChange.listen((data) {});
-  // }
+      await supabase.from('users').insert({
+        'username': username,
+        'password': password,
+        'email': email,
+        'phone_number': phoneNumber,
+      });
+
+      await supabase.auth.signUp(
+        email: email,
+        password: password,
+      );
+
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => dataTokoPage(),
+        ),
+      );
+    } catch (e) {
+      print('error cuy : $e');
+    }
+  }
 
   // final Map<String, Map<String, String>> translations = {
   @override
@@ -151,12 +153,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 child: Center(
                   child: GestureDetector(
                     onTap: () async {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => dataTokoPage(),
-                        ),
-                      );
+                      await signUpUsers;
                     },
                     child: MyButton(
                       buttonText: 'SIGN UP',
